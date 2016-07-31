@@ -20,7 +20,7 @@ $(document).ready(function(){
 		previewsContainer: "#previews", // Define the container to display the previews
 		sending: function(file, response){
 			console.log('sending------------------------------')
-			# $( "a:contains('Cancel upload')" ).css( "display", "none" );
+			// $( "a:contains('Cancel upload')" ).css( "display", "none" );
 		},
 		success: function(file, response){
 			$.ajax({
