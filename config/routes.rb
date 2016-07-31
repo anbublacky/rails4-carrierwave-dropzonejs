@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  resources :products do
-    resources :pictures
-  end
+  resources :students
+
+  # resources :products do
+  #   resources :pictures
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'students#new'
+  get '/render-progress-limit' => 'students#progress_limit'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

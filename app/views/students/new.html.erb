@@ -1,0 +1,72 @@
+<div class="header">
+  
+  <h3 class="text-muted">Upload Forms</h3>
+  <div class="steps">
+	  <ul class="nav nav-pills pull-right">
+	    <li class="active">Step 2/3</li>
+	  </ul>
+	  Select file(s) to upload
+	</div>
+</div>
+<div style="padding-bottom: 20px">
+	We accept PDF, JPG, PNG files. Total size must be under 10MB/submission (all files combined).Paperwork requiring Signature Guarantee must be mailed in.
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="btn btn-default">	
+			<%= form_for(@student, html: { multipart: true, class: "dropzone"}) do |f|  %>
+		  	<%= f.hidden_field :student_id, value: @student.id %>
+				ADD FILE(S)
+			  <div class="fallback">
+			    <%= f.file_field :imagefile, multiple: true %><br>
+			    <%= f.submit "Upload" %>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-md-6 progress-limit">
+		<%= render partial: 'progress_limit', locals: {student: @student} %>
+  </div>
+</div>
+</div>
+<br>
+
+
+<!-- HTML heavily inspired by http://blueimp.github.io/jQuery-File-Upload/ -->
+<div class="row table-header">
+    <div class="col-md-5">
+      Name
+    </div>
+    <div class="col-md-2">
+      Size
+    </div>
+    <div class="col-md-4">
+      Progress
+    </div>
+  </div>
+<div class="table table-striped" class="files" id="previews">
+  <div id="template" class="file-row">
+    <!-- This is used as the file preview template -->
+    <div class="col-md-11">
+	    <div class="col-md-5">
+	        <p class="name" data-dz-name></p>
+	        <strong class="error text-danger" data-dz-errormessage></strong>
+	    </div>
+	    <div class="col-md-2">
+	        <p class="size" data-dz-size></p>
+	        <p class="dz-type" data-dz-type></p>
+	    </div>
+	    <div class="col-md-4">
+        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+	      </div>
+	    </div>
+	  </div>
+  </div>
+</div>
+
+<div class="footer">
+  <span class="btn btn-default step-btn"> Next</span>
+  <span class="btn btn-default step-btn"> Back</span>
+  <a href="#" class="step-cancel">Cancel</a>
+</div>

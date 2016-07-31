@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140619175727) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "pictures", force: true do |t|
     t.integer  "product_id"
     t.datetime "created_at"
@@ -20,12 +23,20 @@ ActiveRecord::Schema.define(version: 20140619175727) do
     t.string   "image"
   end
 
-  add_index "pictures", ["product_id"], name: "index_pictures_on_product_id"
+  add_index "pictures", ["product_id"], name: "index_pictures_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "students", force: true do |t|
+    t.string   "name"
+    t.integer  "age"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.json     "imagefile"
   end
 
 end
